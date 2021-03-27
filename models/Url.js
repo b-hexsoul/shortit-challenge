@@ -3,14 +3,15 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const urlSchema = new Schema({
-  url_long: String,
-  url_short: {
+  url_code: {
     type: String,
     validate: {
-      validator: (url_short) => Url.doesNotExist({ url_short }),
+      validator: (url_code) => Url.doesNotExist({ url_code }),
       message: "Shorten URL already exists",
     },
   },
+  url_long: String,
+  url_short: String,
   count: Number,
 });
 
